@@ -1,0 +1,31 @@
+public class JSONSerializer {
+
+  private Context mContext;
+  private String mFilename;
+  
+  public JSONSerializer(Context c, String f) {
+    mContext = c;
+    mFilename = f;
+  }
+
+  public void saveFiles(ArraList<file> files)throws JSONException, IOException {
+  
+  // Build an array in JSON
+  JSONArray array = new JSONArray();
+  for (File f : files)
+    array.put(f.toJSON());
+  
+  // Write the file to disk
+  Writer writer = null;
+  try {
+    OutputStream out = mContext
+      .openFileOutput(mFilename, Context.MODE_PRIVATE);
+    writer = new OutputStreamWriter(out);
+    writer.write(array.toString());
+  } finally {
+    if (writer != null)
+      writer.close();
+  }
+  
+  }
+}

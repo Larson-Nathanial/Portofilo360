@@ -1,0 +1,20 @@
+
+1. SET
+// No duplicates when it is printed out.
+
+final Set<String> basicSet = new HashSet<String>();
+basicSet.add("One");
+basicSet.add("Two");
+basicSet.add("One");
+basicSet.add("Three");
+
+2. LIST
+// Just is like an array.
+
+final List<String> strings = new ArrayList<String>();
+strings.add("Two");
+strings.add("Three");
+strings.add(0, "One");
+strings.add(3, "One");
+strings.add("Three");
+strings.add(strings.size() - 1, "Two");

@@ -7,7 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -27,7 +31,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         *
         * Hash Map is similar to a NSDictionary in Objective - C in that you have a bunch of
         * key-value pairs in a single map or dictionary with not particular order to them.
-         */
+
 
         // Get the message
         String searchKey = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
@@ -50,7 +54,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
 
         map.clear();
 
-        /*
+
         * This is the end of the hash map demonstration.
          */
 
@@ -59,7 +63,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         *
         * Tree Maps are useful for at least one reason and that is that they order things
         * already for you.  This example prints out the keys in alphabetical order.
-         */
+
 
         // Create a Text View
         TextView textView = new TextView(this);
@@ -83,10 +87,75 @@ public class DisplayMessageActivity extends ActionBarActivity {
         textView.setText(endString.toString());
         map.clear();
 
-        /*
+
         * This is the end of the Tree map demonstration.
          */
 
+
+        /*
+        * This section demonstrates the usage of a Set Collection
+        * A set is kind of like an unordered array, where you just have
+        * a collection of objects.  A hash set is not the only kind of set
+        * available. For example, there is also ENUMSet and others.
+
+
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+
+        Set setA = new HashSet();
+
+        setA.add("element 0");
+        setA.add("element 1");
+        setA.add("element 2");
+        setA.add("element 3");
+        setA.add("element 4");
+
+        String newString = new String();
+        Iterator iterator = setA.iterator();
+        while (iterator.hasNext()){
+            String element = (String) iterator.next();
+            newString = newString + " " + element.toString();
+        }
+
+        textView.setText(newString.toString());
+
+        * End of Set Collection Example
+         */
+
+        /*
+        * This section demonstrates the usage of a List Collection
+        * There are more than just an ArrayList as demonstrated here,
+        * just like above there is more than just a hashSet.
+         */
+
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+
+        List listA = new ArrayList();
+
+        listA.add("John");
+        listA.add("Rebecca");
+        listA.add("Lehi");
+        listA.add("Mo");
+        listA.add("Lucka");
+
+        String secondString = new String();
+        Boolean keepIterating = true;
+        Iterator nIterator = listA.iterator();
+        int i = 0;
+        while (keepIterating){
+            secondString = secondString + " " + (String)nIterator.next().toString();
+            i++;
+            if (i == listA.size())       {
+                keepIterating = false;
+            }
+        }
+
+        textView.setText(secondString.toString());
+
+        /*
+        * End of List Collection Example.
+         */
         setContentView(textView);
     }
 
